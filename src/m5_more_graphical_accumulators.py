@@ -75,7 +75,12 @@ def run_test_draw_squares_from_circle():
 
 def draw_squares_from_circle(n, circle, window):
     circle.attach_to(window)
-    square=rg.Point(circle.center.x+circle.radius,circle.center.y+circle.radius)
+    square=rg.Square(circle.center,circle.radius*2)
+    square.attach_to(window)
+    for k in range(1,n+1):
+        square=rg.Square(rg.Point(circle.center.x+circle.radius*k,circle.center.y+circle.radius*k),circle.radius*2)
+        square.attach_to(window)
+    window.render()
     """
     What comes in:  Three arguments:
       -- A positive integer n.
@@ -101,7 +106,7 @@ def draw_squares_from_circle(n, circle, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -125,7 +130,7 @@ def run_test_draw_circles_from_rectangle():
     print('--------------------------------------------------')
 
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # DONE: 3. Implement this TEST function.
     #   It TESTS the  draw_circles_from_rectangle  function
     #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
@@ -137,9 +142,46 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ###########################################################################
     # -------------------------------------------------------------------------
+    title = 'Tests 1 and 2 of DRAW_CIRCLES_FROM_SQUARE: '
+    window1 = rg.RoseWindow(500, 500, title)
+
+    # Test 1:
+    rectangle = rg.Rectangle(rg.Point(100,50),rg.Point(200,100))
+    rectangle.fill_color = 'green'
+    draw_circles_from_rectangle(8,7, rectangle,window1)
+
+    # Test 2:
+    rectangle = rg.Rectangle(rg.Point(350, 70), rg.Point(400,10))
+    draw_circles_from_rectangle(5,4, rectangle, window1)
+    window1.close_on_mouse_click()
+
+    # -------------------------------------------------------------------------
+    # A third test on ANOTHER window.
+    # -------------------------------------------------------------------------
+    title = 'Test 3 of DRAW_CIRCLES_FROM_SQUARE: '
+    window2 = rg.RoseWindow(700, 700, title)
+
+    # Test 3:
+    rectangle = rg.Rectangle(rg.Point(50, 50), rg.Point(100,300))
+    rectangle.fill_color = 'blue'
+    draw_circles_from_rectangle(15,20, rectangle, window2)
+
+    window2.close_on_mouse_click()
 
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
+    rectangle.attach_to(window)
+    for k in range(1,m+1):
+        radius=rectangle.get_height()/2
+        circle=rg.Circle(rg.Point(rectangle.get_upper_left_corner().x-(2*k*radius),rectangle.get_upper_left_corner().y+radius),radius)
+        circle.fill_color=rectangle.fill_color
+        circle.attach_to(window)
+    for i in range(1,n+1):
+        radius=abs(rectangle.corner_1.x-rectangle.corner_2.x)/2
+        rectangle.
+
+
+    window.render()
     """
     What comes in:  Four arguments:
       -- Positive integers m and n.
