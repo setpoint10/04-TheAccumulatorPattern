@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Yu Xin.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -69,6 +69,11 @@ def run_test_draw_parallel_lines():
 
 
 def draw_parallel_lines(n, point, length, window):
+    for k in range(n):
+        line=rg.Line(rg.Point(point.x,point.y+30*k),rg.Point(point.x+length,point.y+30*k))
+        line.attach_to(window)
+    window.render()
+
     """
     What comes in: The four arguments are:
       -- A positive integer n.
@@ -96,7 +101,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -134,6 +139,10 @@ def run_test_draw_lines():
 
 
 def draw_lines(n, point, window):
+    for k in range(n):
+        line=rg.Line(point,rg.Point(point.x+100,point.y-100+(k+1)*200/(n+1)))
+        line.attach_to(window)
+    window.render()
     """
     What comes in: The three arguments are:
       -- A integer n that is at least 2.
@@ -161,7 +170,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
