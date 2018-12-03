@@ -74,6 +74,8 @@ def run_test_draw_squares_from_circle():
 
 
 def draw_squares_from_circle(n, circle, window):
+    circle.attach_to(window)
+    square=rg.Point(circle.center.x+circle.radius,circle.center.y+circle.radius)
     """
     What comes in:  Three arguments:
       -- A positive integer n.
