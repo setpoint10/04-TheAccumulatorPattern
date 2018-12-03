@@ -177,8 +177,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
         circle.fill_color=rectangle.fill_color
         circle.attach_to(window)
     for i in range(1,n+1):
-        radius=abs(rectangle.corner_1.x-rectangle.corner_2.x)/2
-        rectangle.
+
 
 
     window.render()
